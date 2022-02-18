@@ -8,14 +8,19 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 
 configure({ adapter: new Adapter() })
 
-describe('App Component', () => {
+describe('<App />', () => {
 
-  it('returns jsx', () => {
+  it('renders properly', () => {
     const wrapper = shallow(
       <App />
     )
 
     expect(wrapper).toMatchSnapshot();
   })
-  
+
+  // it('calls componentDidMount', () => {
+  //   jest.spyOn(App.prototype, 'componentDidMount')
+  //   const wrapper = shallow(<App />)
+  //   expect(App.prototype.componentDidMount.mock.calls.length).toBe(1)
+  // })
 });
