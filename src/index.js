@@ -5,16 +5,23 @@ import App from './app/App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
 import { Global } from '@emotion/react';
 import * as serviceWorker from './serviceWorker';
 
-
+const sizeBreakpoints = createBreakpoints({
+  sm: '20em',
+  md: '40em',
+  lg: '64em',
+  xl: '80em'
+})
 
 const theme = extendTheme({
   fonts: {
     heading: 'Poppins',
     body: 'Poppins'
-  }
+  },
+  sizeBreakpoints
 })
 
 
