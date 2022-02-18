@@ -1,15 +1,16 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-import HomePage from '../HomePage';
+import HomePage from '../NavBar';
+import NavBar from '../NavBar';
 
 configure({ adapter: new Adapter() })
 
-describe('<App />', () => {
+describe('<NavBar />', () => {
 
     it('renders properly', () => {
     const wrapper = shallow(
-        <HomePage />
+        <NavBar />
     )
 
     expect(wrapper).toMatchSnapshot();

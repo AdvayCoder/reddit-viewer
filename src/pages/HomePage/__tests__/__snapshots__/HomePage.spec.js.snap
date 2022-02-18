@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`< /> renders properly 1`] = `ShallowWrapper {}`;
+
+exports[`<> /> renders properly 1`] = `ShallowWrapper {}`;
+
 exports[`<App /> renders properly 1`] = `ShallowWrapper {}`;
+
+exports[`<HomePa /> renders properly 1`] = `ShallowWrapper {}`;
+
+exports[`<HomePage /> renders properly 1`] = `ShallowWrapper {}`;

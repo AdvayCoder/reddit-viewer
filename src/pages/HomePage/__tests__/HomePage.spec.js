@@ -5,7 +5,7 @@ import HomePage from '../HomePage';
 
 configure({ adapter: new Adapter() })
 
-describe('<App />', () => {
+describe('<HomePage />', () => {
 
     it('renders properly', () => {
     const wrapper = shallow(
