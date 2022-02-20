@@ -14,7 +14,7 @@ const NavBar = () => {
             <Flex 
                 h='70px'
                 p='2rem' 
-                align='center' 
+                align='center'
                 bg='rgb(86, 148, 241)'
                 grow={'30% 70%'}
                 position='fixed'

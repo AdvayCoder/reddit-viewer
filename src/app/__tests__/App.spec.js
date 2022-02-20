@@ -3,6 +3,8 @@ import React from 'react';
 // import { Provider } from 'react-redux';
 // import { store } from '../store';
 import App from '../App';
+import { store } from '../store';
+import { Provider } from 'react-redux';
 import { shallow, configure } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 
@@ -12,7 +14,9 @@ describe('<App />', () => {
 
   it('renders properly', () => {
     const wrapper = shallow(
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     )
 
     expect(wrapper).toMatchSnapshot();
