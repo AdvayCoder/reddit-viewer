@@ -12,7 +12,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadPosts('https://www.reddit.com/r/ProgrammerHumor.json'));
+    dispatch(loadPosts('https://www.reddit.com/r/ProgrammerHumor.json?limit=100'));
   }, [dispatch])
 
   return (

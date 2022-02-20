@@ -11,8 +11,8 @@ import * as serviceWorker from './serviceWorker';
 const sizeBreakpoints = createBreakpoints({
   sm: '20em',
   md: '40em',
-  lg: '64em',
-  xl: '80em'
+  lg: '95em',
+  xl: '100em'
 })
 
 const theme = extendTheme({
@@ -20,7 +20,7 @@ const theme = extendTheme({
     heading: 'Poppins',
     body: 'Poppins'
   },
-  // sizeBreakpoints,
+  sizeBreakpoints,
   styles: {
     global: (props) => ({
       body: {

@@ -1,13 +1,12 @@
 import React from 'react';
 import { Grid, Center } from '@chakra-ui/react';
 import Post from './Post';
-import { selectPosts, selectIsLoading } from './postsSlice';
+import { selectPosts } from './postsSlice';
 import { useSelector } from 'react-redux';
 
 function Posts() {
 
     const posts = useSelector(selectPosts);
-    const isLoading = useSelector(selectIsLoading);
 
     console.log(posts)
 
@@ -16,7 +15,7 @@ function Posts() {
     return (
         <Center>
             <Grid 
-                templateColumns='1'
+                templateColumns={{'sm': '1', 'xl': 'repeat(2, 1fr)'}}
                 gap={10}
                 px={10}
             >

@@ -18,7 +18,7 @@ const NavBar = () => {
                 bg='rgb(86, 148, 241)'
                 grow={'30% 70%'}
                 position='fixed'
-                w='100%' 
+                w='100%'
                 zIndex={10}
                 top={0}
             >
@@ -67,7 +67,9 @@ const NavBar = () => {
                         />
                     </Flex>
                     <Flex  flexDir='column' align='center'>
-                        <NavLink style={{textDecoration: 'none', fontSize: 25}} to="/">Home</NavLink>
+                        <Button>
+                            <NavLink style={{textDecoration: 'none', fontSize: 25}} to="/">Home</NavLink>
+                        </Button>
                     </Flex>
                 </Flex>
             </Flex>
