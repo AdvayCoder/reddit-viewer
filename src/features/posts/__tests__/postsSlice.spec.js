@@ -2,7 +2,8 @@ import { postsReducer, loadPosts, selectPosts, selectIsLoading, selectHasError }
 import { Reducer, Selector } from 'redux-testkit';
 
 const initialState = {
-    posts: [],
+    posts: {},
+    singlePost: {},
     isLoading: false,
     hasError: false
 }

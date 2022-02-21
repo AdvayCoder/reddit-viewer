@@ -8,9 +8,7 @@ function Posts() {
 
     const posts = useSelector(selectPosts);
 
-    console.log(posts)
-
-    const postArr = posts.map((post, index) => <Post postData={post} key={index} />)
+    const postArr = Object.values(posts).map((post, index) => <Post postData={post} key={index} />)
 
     return (
         <Center>

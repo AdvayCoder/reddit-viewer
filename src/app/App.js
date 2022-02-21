@@ -5,7 +5,8 @@ import NavBar from '../Components/NavBar/NavBar';
 import HomePage from '../pages/HomePage/HomePage';
 import InitFonts from './InitFonts/InitFonts';
 import { useDispatch } from 'react-redux';
-import {loadPosts} from '../features/posts/postsSlice';
+import { loadPosts } from '../features/posts/postsSlice';
+import DetailedView from '../Components/DetailedView/DetailedView';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadPosts('https://www.reddit.com/r/ProgrammerHumor.json?limit=100'));
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={ <HomePage /> } />
+        <Route path={'/post/:id'} element={<DetailedView />} />
       </Routes>
     </Router>
   );
