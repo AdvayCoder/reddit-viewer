@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import checkFileType from '../../utils/checkFileType';
 import Comment from '../Comment/Comment';
 
-
 const DetailedView = () => {
 
     const { id } = useParams();
@@ -43,8 +42,8 @@ const DetailedView = () => {
                 Object.values(singlePostData).length && (
                     <Flex mt='100px' maxW='100%' flexDir='column'>
                         <Flex flexDir='column' align='center' sx={{flexGrow: 1}}>
-                            <Text>u/{singlePostData.main.author}</Text>
-                            <Text fontWeight={700} fontSize='30' maxW='700px'>{singlePostData.main.title}</Text>
+                            <Text color='#2D2F39' fontWeight={600}>u/{singlePostData.main.author}</Text>
+                            <Text fontWeight={700} fontSize={['1.5rem', null, '2rem', null]} maxW='700px'>{singlePostData.main.title}</Text>
                             {checkFileType(singlePostData.main.resourceUrl) === 'image' ? (
                                 <Image src={singlePostData.main.resourceUrl} maxW='60%' maxH='80%' />
                             ) : (
