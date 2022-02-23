@@ -46,7 +46,7 @@ const DetailedView = () => {
                 <PostSeleton />
             ) : (
                 Object.values(singlePostData).length && (
-                    <Flex mt='100px' maxW='100%' flexDir='column'>
+                    <Flex mt='100px' maxW='100%' w='100%' flexDir='column'>
                         <Flex flexDir='column' align='center' sx={{flexGrow: 1}}>
                             <Text color='#2D2F39' fontWeight={600}>u/{singlePostData.main.author}</Text>
                             <Text fontWeight={700} fontSize={['1.5rem', null, '2rem', null]} maxW='700px'>{singlePostData.main.title}</Text>
