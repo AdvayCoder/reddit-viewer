@@ -1,10 +1,11 @@
 import { Flex, Text, Box, Image, Skeleton, Center } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { loadSinglePost, selectSinglePost, selectIsLoading } from "../../features/posts/postsSlice";
+import { loadSinglePost, selectSinglePost, selectIsLoading, selectSinglePostError } from "../../features/posts/postsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import checkFileType from '../../utils/checkFileType';
 import Comment from '../Comment/Comment';
+import PageNotFound from "../../Components/PageNotFound/PageNotFound";
 
 const DetailedView = () => {
 
@@ -18,6 +19,11 @@ const DetailedView = () => {
 
     const singlePostData = useSelector(selectSinglePost);
     const isLoading = useSelector(selectIsLoading);
+    const singlePostError = useSelector(selectSinglePostError);
+
+    if(singlePostError) {
+        return <PageNotFound />;
+    }
 
     const PostSeleton = () => {
         return (

@@ -7,6 +7,7 @@ import InitFonts from './InitFonts/InitFonts';
 import { useDispatch } from 'react-redux';
 import { loadPosts } from '../features/posts/postsSlice';
 import DetailedView from '../Components/DetailedView/DetailedView';
+import PageNotFound from '../Components/PageNotFound/PageNotFound';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <InitFonts />
       <NavBar />
       <Routes>
+        <Route path="*" element={ <PageNotFound /> } />
         <Route path="/" element={ <HomePage /> } />
         <Route path={'/post/:id'} element={<DetailedView />} />
       </Routes>

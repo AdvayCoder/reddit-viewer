@@ -6,6 +6,8 @@ export const loadPosts = createAsyncThunk(
         const res = await fetch(urlToFetch);
         const json = await res.json();
 
+        console.log(json)
+
         const postsArr = [];
         json.data.children.forEach(post => {
             if(post.data.link_flair_text === 'Mod post') { //excludes mod non-post posts
@@ -28,9 +30,15 @@ export const loadPosts = createAsyncThunk(
 export const loadSinglePost = createAsyncThunk(
     'posts/loadSinglePost',
     async (urlToFetch) => {
-        const res = await fetch(urlToFetch);
-        const json = await res.json();
-        const postDataArr = {
+        let json;
+        try {
+            const res = await fetch(urlToFetch);
+            json = await res.json();
+        } catch (error) {
+            return null;
+        }
+
+        const postDataObj = {
             main: {
                 title: json[0].data.children[0].data.title,
                 resourceUrl: json[0].data.children[0].data.url,
@@ -49,7 +57,7 @@ export const loadSinglePost = createAsyncThunk(
 
             // let replies = comment.data.replies.data.children.slice(0, 10);
 
-            postDataArr.comments.push({
+            postDataObj.comments.push({
                 body: comment.data.body,
                 author: comment.data.author,
 
@@ -64,7 +72,7 @@ export const loadSinglePost = createAsyncThunk(
             })
         })
 
-        return postDataArr;
+        return postDataObj;
     }
 )
 
@@ -74,7 +82,8 @@ const postsSlice = createSlice({
         posts: {},
         singlePost: {},
         isLoading: false,
-        hasError: false
+        hasError: false,
+        singlePostError: false
     },
     reducers: {},
     extraReducers: {
@@ -99,7 +108,7 @@ const postsSlice = createSlice({
         //single post
         [loadSinglePost.pending]: (state, action) => {
             state.isLoading = true;
-            state.hasError = false;
+            state.singlePostError = false;
         },
         [loadSinglePost.fulfilled]: (state, action) => {
             state.singlePost = [];
@@ -109,11 +118,12 @@ const postsSlice = createSlice({
             state.singlePost.comments = comments;
             
             state.isLoading = false;
-            state.hasError = false;
+            state.singlePostError = false;
         },
         [loadSinglePost.rejected]: (state, action) => {
+            console.log('error')
             state.isLoading = false;
-            state.hasError = true;
+            state.singlePostError = true;
         }
     }
 })
@@ -126,3 +136,4 @@ export const selectPosts = state => state.posts.posts;
 export const selectSinglePost = state => state.posts.singlePost;
 export const selectIsLoading = state => state.posts.isLoading;
 export const selectHasError = state => state.posts.hasError;
+export const selectSinglePostError = state => state.posts.singlePostError;

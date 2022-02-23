@@ -4,10 +4,9 @@ import Posts from "../../features/posts/Posts";
 import { selectHasError, selectIsLoading } from "../../features/posts/postsSlice";
 import { useSelector } from "react-redux";
 
+
 const CardSkeleton = () => {
     return (
-        
-            
             <Center>
                 { /* Desktop */ }
                 <VStack display={['none', 'none', 'flex', 'flex']} w='600px' h='500px' border='1px solid grey' borderRadius={3} m='6' m='10' spacing='50px'>
