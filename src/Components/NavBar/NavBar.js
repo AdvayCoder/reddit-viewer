@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import './NavBar.css';
-import { NavLink } from "react-router-dom";
-import { Flex, Spacer, IconButton, Text, Button } from "@chakra-ui/react";
+import { Link as RouterLink, NavLink, useLocation } from "react-router-dom";
+import { Flex, IconButton, Text, Button, Link, Box, Center } from "@chakra-ui/react";
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { BsGithub } from 'react-icons/bs';
 import { RiCloseCircleLine } from 'react-icons/ri';
-
+import Search from "../../features/search/Search";
 const NavBar = () => {
 
     const [display, setDisplay] = useState('none');
+
+    const location = useLocation();
 
     return (
         <nav>
@@ -21,16 +24,32 @@ const NavBar = () => {
                 w='100%'
                 zIndex={10}
                 top={0}
+                justify='space-around'
             >
                 {/* Desktop */}
-                <Text fontSize={'30px'} fontWeight={700}>Reddit Viewer</Text>
-                <Spacer />
-                <Flex display={['none', 'none', 'flex', 'flex']} >
-                    <Button>
-                        <NavLink style={{textDecoration: 'none', fontSize: 25}} to="/">Home</NavLink>
-                    </Button>
+                <Text fontSize={'30px'} fontWeight={700}>
+                    <Link as={RouterLink} to='/' _hover={{textDecoration: 'none'}} >
+                        Reddit Viewer
+                    </Link>
+                </Text>
+                <Flex w='70%' justify='space-around' align='center' display={['none', 'none', 'flex', 'flex']} >
+                    <Box flexGrow={1}>
+                        <Button>
+                            <NavLink style={{textDecoration: 'none', fontSize: 25}} to="/" >Home</NavLink>
+                        </Button>
+                    </Box>
+                    {location.pathname === '/' && (<Search flexGrow={2} />)}
+                    <Link
+                        isExternal
+                        href='https://github.com/'
+                        size='lg'
+                        flexGrow={1}
+                    >
+                        <Center>
+                            <BsGithub size={50} />
+                        </Center>
+                    </Link>
                 </Flex>
-                <Spacer />
 
                 {/* Mobile */}
                 <IconButton 
@@ -67,9 +86,23 @@ const NavBar = () => {
                         />
                     </Flex>
                     <Flex  flexDir='column' align='center'>
-                        <Button>
+                        <Button my='1rem' >
                             <NavLink style={{textDecoration: 'none', fontSize: 25}} to="/">Home</NavLink>
                         </Button>
+                        {/* We can implement a search fetaure for mobile, but with the current layout it may not be useful.  Uncomment below to test it. */}
+                        {/* {location.pathname === '/' && (<Search />)} */}
+                        <Link
+                            isExternal
+                            href='https://github.com/'
+                            size='lg'
+                            flexGrow={1}
+                            my='1rem'
+                            title='Github'
+                        >
+                            <Center>
+                                <BsGithub size={50} />
+                            </Center>
+                        </Link>
                     </Flex>
                 </Flex>
             </Flex>

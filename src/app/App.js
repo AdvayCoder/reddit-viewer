@@ -6,6 +6,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import InitFonts from './InitFonts/InitFonts';
 import { useDispatch } from 'react-redux';
 import { loadPosts } from '../features/posts/postsSlice';
+import { clearSearch } from '../features/search/searchSlice';
 import DetailedView from '../Components/DetailedView/DetailedView';
 import PageNotFound from '../Components/PageNotFound/PageNotFound';
 

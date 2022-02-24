@@ -1,11 +1,12 @@
-import { postsReducer, loadPosts, selectPosts, selectIsLoading, selectHasError } from '../postsSlice'
-import { Reducer, Selector } from 'redux-testkit';
+import { postsReducer } from '../postsSlice'
+import { Reducer } from 'redux-testkit';
 
 const initialState = {
     posts: {},
     singlePost: {},
     isLoading: false,
-    hasError: false
+    hasError: false,
+    singlePostError: false,
 }
 
 describe('store/posts/reducers', () => {

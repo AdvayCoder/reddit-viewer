@@ -1,12 +1,17 @@
 import React from 'react';
 import { Grid, Center } from '@chakra-ui/react';
 import Post from './Post';
-import { selectPosts } from './postsSlice';
-import { useSelector } from 'react-redux';
+import { selectFiltererdPosts } from './postsSlice';
+import { clearSearch } from '../search/searchSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Posts() {
 
-    const posts = useSelector(selectPosts);
+    const dispatch = useDispatch();
+
+    // dispatch(clearSearch());
+
+    const posts = useSelector(selectFiltererdPosts);
 
     const postArr = Object.values(posts).map((post, index) => <Post postData={post} key={index} />)
 
@@ -17,7 +22,7 @@ function Posts() {
                 gap={10}
                 px={10}
             >
-                    {postArr}
+                {postArr}
             </Grid>
         </Center>
     )

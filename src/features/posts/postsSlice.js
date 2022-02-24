@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { selectSearch } from '../search/searchSlice';
 
 export const loadPosts = createAsyncThunk(
     'posts/loadPosts',
@@ -133,6 +134,16 @@ export const postsReducer = postsSlice.reducer;
 
 //selectors
 export const selectPosts = state => state.posts.posts;
+export const selectFiltererdPosts = state => {
+    const search = selectSearch(state);
+    const posts = selectPosts(state);
+
+    const filteredPosts = Object.values(posts).filter(post => {
+        return post.title.toLowerCase().includes(search.toLowerCase());
+    })
+
+    return filteredPosts;
+}
 export const selectSinglePost = state => state.posts.singlePost;
 export const selectIsLoading = state => state.posts.isLoading;
 export const selectHasError = state => state.posts.hasError;
