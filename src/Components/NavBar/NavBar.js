@@ -6,6 +6,8 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { BsGithub } from 'react-icons/bs';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import Search from "../../features/search/Search";
+
+
 const NavBar = () => {
 
     const [display, setDisplay] = useState('none');
@@ -41,7 +43,7 @@ const NavBar = () => {
                     {location.pathname === '/' && (<Search flexGrow={2} />)}
                     <Link
                         isExternal
-                        href='https://github.com/'
+                        href='https://github.com/AdvayCoder/reddit-viewer'
                         size='lg'
                         flexGrow={1}
                     >
